@@ -10,7 +10,7 @@ router.get('/:quizId', async (req, res) => {
             .limit(10);  // Limit to top 10 attempts
         const leaderboard = await Promise.all(
             quizAttempts.map(async (attempt) => {
-                const user = await User.findById(attempt.user); // Fetch user by ID
+                const user = await User.findById(attempt.user);
                 return {
                     user: user ? user.username : 'Unknown',  // Provide username (fallback to 'Unknown')
                     score: attempt.score
